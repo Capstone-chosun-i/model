@@ -99,6 +99,8 @@
 </script>
 
 ## 링크
+티처블 머신 사용해보고 싶은 분들은 아래 링크를 통해 경험해 보세요!
+
 <https://teachablemachine.withgoogle.com/>
 
 
