@@ -21,3 +21,6 @@
   * 기온에 따른 옷 추천
   * 이미지 업로드 및 분석
 <img width="268" alt="화면 캡처 2022-06-17 013811" src="https://user-images.githubusercontent.com/96337129/174122032-b28acab9-cced-4639-8749-6cd19c53c2d3.png">
+
+* 크롤링
+  * 크롤링을 사용한 데이터 수집 
