@@ -33,6 +33,9 @@
  2. css작업을 같이 진행하여 웹사이트 완성도 높이기
  3. teachable machine을 먼저 활용 후 모델링 직접 구현
 
+## 링크
+<https://teachablemachine.withgoogle.com/>
+
 ## 모델 소스코드(티처블 머신 활용)
 ![티처블1](https://user-images.githubusercontent.com/96335258/174133716-e9629ead-58f3-4b1b-a492-76b80e62dbb5.jpg)
 
