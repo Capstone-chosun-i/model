@@ -1,6 +1,5 @@
-<div align=center> 
-     # 20174335 김성욱
-     <div/>
+# 20174335 김성욱
+  
 ## _CAPSTONE DESIGN 1_
 
 
