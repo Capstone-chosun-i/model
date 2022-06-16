@@ -24,7 +24,8 @@
 
 * 크롤링
   * 크롤링을 사용한 데이터 수집 
-    * 구글 
+
+구글
 ```c
 from distutils.log import error
 from urllib.request import urlopen
@@ -125,7 +126,7 @@ while(True):
   if not month_woman_google_link[linkIndex]:break
 ```
 
-     * 네이버
+네이버
 ```c
     from distutils.log import error
 from urllib.request import urlopen
