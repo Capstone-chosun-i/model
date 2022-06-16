@@ -215,3 +215,299 @@ while(True):
   pathIndex+=1;
   if not month_naver_link[linkIndex]:break
   ```
+  
+  
+  ## 6월 3일 발표 내용
+  * 수정된 주제 설명
+
+  * 모델링
+    * 티처블 머신
+     
+  * 로그인 및 가입하기
+ 
+ 로그인 및 가입하기 디자인 구현 부분
+  ```c
+  import axios from "axios";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
+import { getUser } from "../../../API/login";
+import FreeButton from "../../../components/CustomButton/FreeButton";
+import { CustomForm, CustomInput } from "../../component/input/component";
+const ModalWrap = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ModalContain = styled.div`
+  position: absolute;
+  top: 6.5rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  z-index: 2005;
+  padding: 1.5rem;
+  background-color: whitesmoke;
+  width: 40rem;
+  @media (max-width: 1120px) {
+    width: 30rem;
+  }
+  @media (max-width: 50rem) {
+    width: 80%;
+  }
+  min-height: 25rem;
+  animation: modal-show 1s;
+  @keyframes modal-show {
+    from {
+      opacity: 0;
+      margin-top: -50px;
+    }
+    to {
+      opacity: 1;
+      margin-top: 0;
+    }
+  }
+`;
+const ModalBack = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 2004;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  animation: modal-bg-show 1s;
+  @keyframes modal-bg-show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`;
+const ModalBody = styled.div`
+  position: relative;
+  width: fit-content;
+  height: 400px;
+  width: 50%;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  border: 1px solid gray;
+`;
+const ModalHeader = styled.div`
+  display: inline-block;
+  position: relative;
+
+  width: 100%;
+  height: fit-content;
+`;
+const ModalTitle = styled.div`
+  position: relative;
+  width: 100%;
+  background-color: #ffcce5;
+  text-align: center;
+`;
+const ModalHeaderBtnWrap = styled.div`
+  position: relative;
+  left: 0;
+`;
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export default function Modal({ closeEvent, dimRef, modalState }) {
+  const dispatch = useDispatch();
+  const [account, setAccount] = useState({ id: "", nickname: "" });
+  const [newAccount, setNewAccount] = useState({ id: "", nickname: "" });
+  const [page, setPage] = useState(0);
+  const next = () => {
+    setPage(page + 1);
+  };
+  const handleChange = (e) => {
+    setAccount({
+      ...account,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleNewChange = (e) => {
+    setNewAccount({
+      ...newAccount,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const onSubmit = (e) => {
+    if (account.id === "" || account.nickname === "") {
+      if (account.id === "") alert("ID 혹은 비밀번호가 잘못되었습니다.");
+      else if (account.nickname === "") alert("ID 혹은 닉네임 잘못되었습니다.");
+    } else {
+      alert("로그인");
+      const result = axios
+        .post(
+          "http://localhost:8080/login",
+
+          { id: account.id, nickname: account.nickname },
+
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: "include",
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          setAccount({ id: "", nickname: "" });
+          closeEvent();
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+  const register = (e) => {
+    if (newAccount.id === "" || newAccount.nickname === "") {
+      if (newAccount.id === "") alert("ID 혹은 비밀번호가 잘못되었습니다.");
+      else if (newAccount.nickname === "")
+        alert("ID 혹은 닉네임 잘못되었습니다.");
+    } else {
+      alert("가입하기");
+      const result = axios
+        .post(
+          "http://localhost:8080/register",
+
+          { id: newAccount.id, nickname: newAccount.nickname },
+
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        )
+        .then((res) => {
+          setNewAccount({ id: "", nickname: "" });
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log(result);
+    }
+  };
+  return (
+    <>
+      {modalState && (
+        <ModalBack id="modalBack" ref={dimRef}>
+          <ModalWrap id="detail">
+            <ModalContain id="modalContain">
+              <ModalHeaderBtnWrap id="modalHeaderBtnWrap">
+                <FreeButton
+                  id="exitBtn"
+                  text={"닫기"}
+                  hoverFontColor={"red"}
+                  fontSize={"15px"}
+                  color={"green"}
+                  clickEvent={() => {
+                    setPage(0);
+                    closeEvent();
+                  }}
+                />
+              </ModalHeaderBtnWrap>
+              <ModalBody id="modalBody">
+                <ModalHeader id="modalHeader">
+                  <ModalTitle>
+                    {page === 0 && <h1>로그인</h1>}
+                    {page === 1 && <h1>가입하기</h1>}
+                  </ModalTitle>
+                </ModalHeader>
+                {page === 0 && (
+                  <>
+                    <ModalContent id="modalContent">
+                      <CustomForm onSubmit={onSubmit}>
+                        <span>아이디</span>
+                        <CustomInput
+                          id="ID"
+                          name="id"
+                          value={account.id}
+                          onChange={handleChange}
+                        ></CustomInput>
+                        <span>닉네임</span>
+
+                        <CustomInput
+                          id="NICKNAME"
+                          type="nickname"
+                          name="nickname"
+                          value={account.nickname}
+                          onChange={handleChange}
+                        ></CustomInput>
+                        <FreeButton
+                          hover="tictok"
+                          hoverBKGColor={"pink"}
+                          color={"#FFCCFF"}
+                          hoverFontColor={"#FF99FF"}
+                          clickEvent={() => {
+                            onSubmit();
+                          }}
+                          text="로그인"
+                        ></FreeButton>
+                        <FreeButton
+                          hover="tictok"
+                          hoverBKGColor={"pink"}
+                          color={"#FFCCFF"}
+                          hoverFontColor={"#FF99FF"}
+                          clickEvent={next}
+                          text="가입하기"
+                        ></FreeButton>
+                      </CustomForm>
+                    </ModalContent>
+                  </>
+                )}
+                {page === 1 && (
+                  <ModalContent id="modalContent">
+                    <CustomForm onSubmit={onSubmit}>
+                      <span>아이디</span>
+                      <CustomInput
+                        id="ID"
+                        name="id"
+                        value={newAccount.id}
+                        onChange={handleNewChange}
+                      ></CustomInput>
+                      <span>닉네임</span>
+
+                      <CustomInput
+                        id="NICKNAME"
+                        type="nickname"
+                        name="nickname"
+                        value={newAccount.nickname}
+                        onChange={handleNewChange}
+                      ></CustomInput>
+
+                      <FreeButton
+                        hover="tictok"
+                        hoverBKGColor={"pink"}
+                        color={"#FFCCFF"}
+                        hoverFontColor={"#FF99FF"}
+                        clickEvent={() => {
+                          register();
+                        }}
+                        text="가입하기"
+                      ></FreeButton>
+                    </CustomForm>
+                  </ModalContent>
+                )}
+              </ModalBody>
+            </ModalContain>
+          </ModalWrap>
+        </ModalBack>
+      )}
+    </>
+  );
+}
+  ```
+
+* 향후 계획
