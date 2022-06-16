@@ -3,6 +3,7 @@
 
 
 주제 : 기온별 패션 추천 웹사이트
+<img width="960" alt="KakaoTalk_20220616_160145216" src="https://user-images.githubusercontent.com/96335258/174011546-7f9ed40c-1f49-4be8-991f-3fc89dcffcfe.png">
 
 캡스톤디자인 발표자료 
 
