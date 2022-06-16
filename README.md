@@ -223,7 +223,6 @@ while(True):
 * 모델링(티처블머신)
      
 * 로그인 및 가입하기
- 
 로그인 및 가입하기 디자인 구현 부분
   ```c
   import axios from "axios";
