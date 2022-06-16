@@ -5,7 +5,7 @@
 
 주제 : 기온별 패션 추천 웹사이트
 
-<img width="501" alt="KakaoTalk_20220616_160145216" src="https://user-images.githubusercontent.com/96335258/174012246-9188539f-2ebc-448a-93a4-9b0422f6a4e0.png"
+<img width="300" alt="KakaoTalk_20220616_160145216" src="https://user-images.githubusercontent.com/96335258/174012246-9188539f-2ebc-448a-93a4-9b0422f6a4e0.png"
      width = "300" height = "300"/>
 
 
@@ -35,7 +35,8 @@
 
 
 ## 모델 소스코드(티처블 머신 활용)
-![티처블1](https://user-images.githubusercontent.com/96335258/174133716-e9629ead-58f3-4b1b-a492-76b80e62dbb5.jpg width = 300 height = 300)
+<src="https://user-images.githubusercontent.com/96335258/174133716-e9629ead-58f3-4b1b-a492-76b80e62dbb5.jpg"
+     width = "300" height = "300"/>
 
 
 <div>Teachable Machine Image Model</div>
