@@ -220,8 +220,7 @@ while(True):
 ## 6월 3일 발표 내용
 * 수정된 주제 설명
 
-* 모델링
- * 티처블 머신
+* 모델링(티처블머신)
      
 * 로그인 및 가입하기
  
@@ -509,7 +508,7 @@ export default function Modal({ closeEvent, dimRef, modalState }) {
   );
 }
   ```
-<img width="960" alt="KakaoTalk_20220617_020755241_01" src="https://user-images.githubusercontent.com/96337129/174127613-643d3086-768c-4620-b492-db77d9e31718.png">
-<img width="960" alt="KakaoTalk_20220617_020755241" src="https://user-images.githubusercontent.com/96337129/174127840-b09b8b6c-4ff0-49cf-b4e9-685ff93b09dd.png">
+<img width="600" alt="KakaoTalk_20220617_020755241_01" src="https://user-images.githubusercontent.com/96337129/174127613-643d3086-768c-4620-b492-db77d9e31718.png">
+<img width="600" alt="KakaoTalk_20220617_020755241" src="https://user-images.githubusercontent.com/96337129/174127840-b09b8b6c-4ff0-49cf-b4e9-685ff93b09dd.png">
 
 * 향후 계획
