@@ -1,4 +1,4 @@
-# Branch로 나누어 개인 발표 자료 업로드
+# Branch - 개인발표자료
 
 ## _CAPSTONE DESIGN 1_I조
 
